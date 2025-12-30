@@ -1,0 +1,164 @@
+rk_customer.customerStatus1 [type_id=21, type_name=客户状态]:
+需求有=C001
+case有=C002
+契约中=C003
+契约完成=C004
+
+rk_customer.customerStatus2 [type_id=22, type_name=契约]:
+有=有
+无=无
+
+rk_vendor.vendorStatus2 [type_id=25, type_name=契约]:
+无=无
+有=有
+
+rk_customer_contact.position [type_id=27, type_name=客户联系人]:
+PM=PM
+調達=調達（采购）
+事務=事務(事务)
+营业=营业
+
+rk_vendor_contact.position [type_id=28, type_name=供应商联系人]:
+営業=営業
+事務=事務
+
+rk_supply.status [type_id=29, type_name=简历状态]:
+稼动中=RKSSS12
+单价调整=RKSSS05
+提案文变更=RKSSS06
+并行更新=statusDetail
+停止营业（他决）=RKSSS08
+营业终了（自社决）=RKSSS09
+提案中=RKSSS11
+
+rk_supply_demand_link.supplyDemandStatus4 [type_id=34, type_name=隐藏状态]:
+隐藏条件匹配=隐藏条件匹配
+
+rk_supply_demand_link.supplyDemandStatus3 [type_id=35, type_name=CASE状态]:
+待确认=待确认
+提案准备=提案准备
+提案济=提案济
+面试调整中=面试调整中
+面试设定济=面试设定济
+结果等待=结果等待
+1/2提案济=1/2提案济
+1/2面试调整中=1/2面试调整中
+1/2面试设定济=1/2面试设定济
+1/2结果等待=1/2结果等待
+1/3提案济=1/3提案济
+1/3面试调整中=1/3面试调整中
+1/3面试设定济=1/3面试设定济
+1/3结果等待=1/3结果等待
+2/2提案济=2/2提案济
+2/2面试调整中=2/2面试调整中
+2/2面试设定济=2/2面试设定济
+2/2结果等待=2/2结果等待
+2/3提案济=2/3提案济
+2/3面试调整中=2/3面试调整中
+2/3面试设定济=2/3面试设定济
+2/3结果等待=2/3结果等待
+3/3提案济=3/3提案济
+3/3面试调整中=3/3面试调整中
+3/3面试设定济=3/3面试设定济
+3/3结果等待=3/3结果等待
+条件交涉=条件交涉
+受注=受注
+入場処理=入場処理
+情况确认=情况确认
+退場処理=退場処理
+
+rk_supply_demand_link.supplyDemandStatus5 [type_id=36, type_name=自动匹配]:
+自动=自动
+手动=手动
+
+rk_supply.japaneseLevel [type_id=37, type_name=日语等级]:
+母语=母语
+商务级别=商务级别
+非常流畅=非常流畅
+流畅=流畅
+其他=其他
+
+rk_supply.englishLevel [type_id=38, type_name=英语等级]:
+母语=母语
+商务级别=商务级别
+日常会话=日常会话
+读写=读写
+其他=其他
+
+rk_supply.role [type_id=39, type_name=角色]:
+顾问初级=顾问初级
+顾问中级=顾问中级
+顾问高级=顾问高级
+SE上流=SE上流
+SE普通=SE普通
+PG高级=PG高级
+PG中级=PG中级
+PG初级=PG初级
+
+rk_demand.citizenship [type_id=40, type_name=需求国籍]:
+外国人可=外国人可
+仅限日本=仅限日本
+
+rk_supply.statusDetail [type_id=41, type_name=并行更新]:
+待确认-1/1面談設定=BX11
+待确认-1/2面談設定=BX12
+待确认-結果待ち有=BX13
+待确认-提案のみ=BX14
+1/1面談設定=BX01
+1/2面談設定=BX02
+結果待ち有=BX03
+提案のみ =BX04
+
+rk_supply.reason [type_id=42, type_name=简历无效原因]:
+重複=重複
+スキル不足=スキル不足
+元PJ延長=元PJ延長
+
+rk_demand.japaneseLevel [type_id=43, type_name=需求日语等级]:
+母语=母语
+商务级别=商务级别
+非常流畅=非常流畅
+流畅=流畅
+其他=其他
+
+rk_demand.englishLevel [type_id=44, type_name=需求英语等级]:
+母语=母语
+其他=其他
+商务级别=商务级别
+日常会话=日常会话
+读写=读写
+
+rk_supply.supplyUserCitizenship [type_id=45, type_name=简历国籍]:
+不明=不明
+印度尼西亚=印度尼西亚
+巴西=巴西
+法国=法国
+中国台湾=中国台湾
+美国=美国
+韩国=韩国
+越南=越南
+香港=香港
+中国=中国
+日本(帰化)=日本(帰化)
+日本=日本
+
+rk_supply.analysis_status [type_id=46, type_name=简历分析状态]:
+分析完成=analysis_done
+分析开始=analysis_start
+分析异常=analysis_error
+匹配开始=match_start
+匹配异常=match_error
+匹配完成=match_done
+
+rk_supply.contact_analysis_status [type_id=47, type_name=简历提案文分析状态]:
+提案文分析开始=contact_analysis_start
+提案文分析完成=contact_analysis_done
+提案文分析异常=contact_analysis_error
+
+rk_demand.analysis_status [type_id=48, type_name=需求分析状态]:
+分析开始=analysis_start
+分析完成=analysis_done
+分析异常=analysis_error
+匹配开始=match_start
+匹配完成=match_done
+匹配异常=match_error

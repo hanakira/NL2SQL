@@ -1,0 +1,62 @@
+{
+  "business_tables": [
+    "rk_active",
+    "rk_announcement",
+    "rk_case_status",
+    "rk_comment",
+    "rk_customer",
+    "rk_customer_column",
+    "rk_customer_contact",
+    "rk_demand",
+    "rk_demand_ai",
+    "rk_demand_condition",
+    "rk_demand_copy",
+    "rk_gaofzhan",
+    "rk_llm_data",
+    "rk_match_res",
+    "rk_notice",
+    "rk_opportunity",
+    "rk_opportunity_line",
+    "rk_setting",
+    "rk_shared_links",
+    "rk_supply",
+    "rk_supply_ai",
+    "rk_supply_demand_link",
+    "rk_supply_edit_record",
+    "rk_vendor",
+    "rk_vendor_contact"
+  ],
+  "dict_tables": [
+    "dict_info",
+    "dict_type"
+  ],
+  "meta_log_tables": [
+    "rk_llm_data"
+  ],
+  "other_tables": [
+    "demo_goods",
+    "migrations",
+    "plugin_info",
+    "query-result-cache",
+    "recycle_data",
+    "space_info",
+    "space_type",
+    "task_info",
+    "task_log",
+    "user_address",
+    "user_info",
+    "user_wx"
+  ],
+  "system_tables": [
+    "base_sys_conf",
+    "base_sys_department",
+    "base_sys_log",
+    "base_sys_menu",
+    "base_sys_param",
+    "base_sys_role",
+    "base_sys_role_department",
+    "base_sys_role_menu",
+    "base_sys_user",
+    "base_sys_user_role"
+  ]
+}
