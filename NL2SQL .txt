@@ -1,0 +1,810 @@
+
+-- 1. dict_type
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (1, 'id', 'int4', '主键'),
+  (1, 'name', 'varchar', '字典类型名称'),
+  (1, 'key', 'varchar', '字典类型编码/标识，供代码引用'),
+  (1, 'page', 'varchar', '适用页面或分组标记');
+
+-- 2. dict_info
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (2, 'id', 'int4', '主键'),
+  (2, 'typeId', 'int4', '关联 dict_type.id'),
+  (2, 'name', 'varchar', '展示名称'),
+  (2, 'value', 'varchar', '存储值/代码，业务字段常存此列'),
+  (2, 'orderNum', 'int4', '排序序号'),
+  (2, 'remark', 'varchar', '备注'),
+  (2, 'parentId', 'int4', '父级字典项'),
+  (2, 'isShow', 'boolean', '是否展示'),
+  (2, 'isProcess', 'boolean', '是否参与后续逻辑处理'),
+  (2, 'fieldName', 'varchar', '绑定的业务字段名');
+
+-- 3. rk_customer
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (3, 'id', 'int4', '主键'),
+  (3, 'createTime', 'timestamp', '创建时间'),
+  (3, 'updateTime', 'timestamp', '更新时间'),
+  (3, 'code', 'varchar', '客户编号/法人号'),
+  (3, 'name', 'varchar', '客户名称'),
+  (3, 'director', 'varchar', '法人代表'),
+  (3, 'address', 'varchar', '地址'),
+  (3, 'remark', 'text', '备注'),
+  (3, 'customerStatus1', 'varchar', '客户状态1，dict typeId=21'),
+  (3, 'customerStatus2', 'varchar', '客户状态2，dict typeId=22'),
+  (3, 'customerStatus3', 'varchar', '客户状态3，预留'),
+  (3, 'customerStatus4', 'varchar', '客户状态4，预留'),
+  (3, 'customerStatus5', 'varchar', '客户状态5，预留'),
+  (3, 'customerStatus6', 'varchar', '客户状态6，预留'),
+  (3, 'customerStatus7', 'varchar', '客户状态7，预留'),
+  (3, 'customerStatus8', 'varchar', '客户状态8，预留'),
+  (3, 'customerStatus9', 'varchar', '客户状态9，预留'),
+  (3, 'customerStatus10', 'varchar', '客户状态10，预留'),
+  (3, 'enterpriseId', 'varchar', '企业ID/外部编号'),
+  (3, 'check', 'boolean', '是否需管理员确认'),
+  (3, 'checkRemark', 'varchar', '管理员确认说明'),
+  (3, 'createdBy', 'int4', '创建人'),
+  (3, 'updatedBy', 'int4', '更新人'),
+  (3, 'ownerId', 'int4', '负责人/所有人'),
+  (3, 'departmentId', 'int4', '所属部门'),
+  (3, 'active', 'boolean', '是否激活'),
+  (3, 'toBeConfirmed', 'boolean', '待确认标记'),
+  (3, 'reason', 'text', '待确认原因/说明');
+
+-- 4. rk_customer_contact
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (4, 'id', 'int4', '主键'),
+  (4, 'createTime', 'timestamp', '创建时间'),
+  (4, 'updateTime', 'timestamp', '更新时间'),
+  (4, 'name', 'varchar', '联系人姓名'),
+  (4, 'email', 'varchar', '邮箱'),
+  (4, 'phone', 'varchar', '电话'),
+  (4, 'address', 'varchar', '地址'),
+  (4, 'postal', 'varchar', '邮编'),
+  (4, 'position', 'varchar', '联系人职位，dict typeId=27'),
+  (4, 'default', 'boolean', '是否默认联系人'),
+  (4, 'remark', 'text', '备注'),
+  (4, 'customerId', 'int4', '关联 rk_customer.id'),
+  (4, 'createdBy', 'int4', '创建人'),
+  (4, 'updatedBy', 'int4', '更新人'),
+  (4, 'ownerId', 'int4', '负责人'),
+  (4, 'departmentId', 'int4', '部门'),
+  (4, 'active', 'boolean', '是否激活'),
+  (4, 'toBeConfirmed', 'boolean', '待确认标记'),
+  (4, 'reason', 'text', '原因说明');
+
+-- 5. rk_vendor
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (5, 'id', 'int4', '主键'),
+  (5, 'createTime', 'timestamp', '创建时间'),
+  (5, 'updateTime', 'timestamp', '更新时间'),
+  (5, 'code', 'varchar', '供应商编号'),
+  (5, 'name', 'varchar', '供应商名称'),
+  (5, 'director', 'varchar', '法人代表'),
+  (5, 'address', 'varchar', '地址'),
+  (5, 'remark', 'text', '备注'),
+  (5, 'vendorStatus1', 'varchar', '供应商状态1，预留'),
+  (5, 'vendorStatus2', 'varchar', '供应商状态2，dict typeId=25'),
+  (5, 'vendorStatus3', 'varchar', '供应商状态3，预留'),
+  (5, 'vendorStatus4', 'varchar', '供应商状态4'),
+  (5, 'vendorStatus5', 'varchar', '供应商状态5'),
+  (5, 'vendorStatus6', 'varchar', '供应商状态6'),
+  (5, 'vendorStatus7', 'varchar', '供应商状态7'),
+  (5, 'vendorStatus8', 'varchar', '供应商状态8'),
+  (5, 'vendorStatus9', 'varchar', '供应商状态9'),
+  (5, 'vendorStatus10', 'varchar', '供应商状态10'),
+  (5, 'enterpriseId', 'varchar', '企业ID/外部编号'),
+  (5, 'folderId', 'varchar', '供应商文件夹ID'),
+  (5, 'folderUrl', 'varchar', '供应商文件夹URL'),
+  (5, 'deltaLink', 'varchar', 'SharePoint增量同步标记'),
+  (5, 'folderUpdate', 'timestamp', '文件夹更新时间'),
+  (5, 'check', 'boolean', '是否需管理员确认'),
+  (5, 'checkRemark', 'varchar', '确认说明'),
+  (5, 'createdBy', 'int4', '创建人'),
+  (5, 'updatedBy', 'int4', '更新人'),
+  (5, 'ownerId', 'int4', '负责人'),
+  (5, 'departmentId', 'int4', '部门'),
+  (5, 'active', 'boolean', '是否激活'),
+  (5, 'toBeConfirmed', 'boolean', '待确认标记'),
+  (5, 'reason', 'text', '原因说明');
+
+-- 6. rk_vendor_contact
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (6, 'id', 'int4', '主键'),
+  (6, 'createTime', 'timestamp', '创建时间'),
+  (6, 'updateTime', 'timestamp', '更新时间'),
+  (6, 'name', 'varchar', '联系人姓名'),
+  (6, 'email', 'varchar', '邮箱'),
+  (6, 'phone', 'varchar', '电话'),
+  (6, 'address', 'varchar', '地址'),
+  (6, 'postal', 'varchar', '邮编'),
+  (6, 'position', 'varchar', '职位，dict typeId=28'),
+  (6, 'default', 'boolean', '是否默认联系人'),
+  (6, 'remark', 'text', '备注'),
+  (6, 'vendorId', 'int4', '关联 rk_vendor.id'),
+  (6, 'createdBy', 'int4', '创建人'),
+  (6, 'updatedBy', 'int4', '更新人'),
+  (6, 'ownerId', 'int4', '负责人'),
+  (6, 'departmentId', 'int4', '部门'),
+  (6, 'active', 'boolean', '是否激活'),
+  (6, 'toBeConfirmed', 'boolean', '待确认标记'),
+  (6, 'reason', 'text', '原因说明');
+
+-- 7. rk_supply
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (7, 'id', 'int4', '主键'),
+  (7, 'createTime', 'timestamp', '创建时间'),
+  (7, 'updateTime', 'timestamp', '更新时间'),
+  (7, 'code', 'varchar', '简历/供应编号'),
+  (7, 'name', 'varchar', '简历文件名称'),
+  (7, 'namePinyin', 'varchar', '姓名拼音(姓氏)'),
+  (7, 'firstNamePinyin', 'varchar', '姓名拼音(名)'),
+  (7, 'lastName', 'varchar', '姓'),
+  (7, 'firstName', 'varchar', '名'),
+  (7, 'path', 'varchar', 'SharePoint路径/链接'),
+  (7, 'price', 'float', '报价'),
+  (7, 'skillScores', 'text', '技能评分JSON'),
+  (7, 'remark', 'text', '备注'),
+  (7, 'resumeRes', 'text', '简历解析原文/结果'),
+  (7, 'vendorId', 'int4', '关联供应商'),
+  (7, 'vendorContactId', 'int4', '关联供应商联系人'),
+  (7, 'supplyUserName', 'varchar', '候选人姓名'),
+  (7, 'supplyUserAge', 'varchar', '候选人年龄'),
+  (7, 'supplyUserGender', 'varchar', '候选人性别'),
+  (7, 'supplyUserCitizenship', 'varchar', '候选人国籍，dict typeId=45'),
+  (7, 'score', 'float', '简历评分'),
+  (7, 'status', 'varchar', '业务状态，dict typeId=29'),
+  (7, 'fileName', 'varchar', '简历文件名'),
+  (7, 'fileId', 'varchar', '简历文件ID'),
+  (7, 'fileUpdate', 'timestamp', '简历文件更新时间'),
+  (7, 'duplicateStatus', 'int4', '去重状态'),
+  (7, 'duplicateContent', 'varchar', '重名/重复内容'),
+  (7, 'startWorkDate', 'varchar', '第一份工作时间'),
+  (7, 'nearestStation', 'varchar', '最近车站'),
+  (7, 'workMode', 'varchar', '工作方式(现场/远程等)'),
+  (7, 'specialty', 'varchar', '特长'),
+  (7, 'yearsOfWork', 'int4', '工作年限'),
+  (7, 'availableDate', 'varchar', '可上岗日期'),
+  (7, 'skillx', 'varchar', '技能X轴'),
+  (7, 'skilly', 'varchar', '技能Y轴'),
+  (7, 'skillz', 'varchar', '技能Z轴'),
+  (7, 'japaneseLevel', 'varchar', '日语等级，dict typeId=37'),
+  (7, 'englishLevel', 'varchar', '英语等级，dict typeId=38'),
+  (7, 'errorStatus', 'varchar', '分析异常状态'),
+  (7, 'fatherSkill', 'varchar', '主技能/父技能'),
+  (7, 'supplyBirthday', 'varchar', '生日'),
+  (7, 'fileMd5', 'varchar', '文件MD5'),
+  (7, 'contentConfirm', 'int4', '内容确认标记'),
+  (7, 'acdtc', 'boolean', 'AC/DTC 标记'),
+  (7, 'contractedMember', 'boolean', '签约成员标记'),
+  (7, 'work_percent', 'int4', '出勤比例'),
+  (7, 'role', 'varchar', '角色，dict typeId=39'),
+  (7, 'analysisVersion', 'varchar', '解析版本'),
+  (7, 'japaneseLevelAi', 'varchar', 'AI识别日语等级'),
+  (7, 'englishLevelAi', 'varchar', 'AI识别英语等级'),
+  (7, 'statusDetail', 'varchar', '状态详情，dict typeId=41 并行更新'),
+  (7, 'caseStatus', 'varchar', 'Case状态'),
+  (7, 'auditionDate', 'varchar', '面试日期'),
+  (7, 'auditionIdea', 'varchar', '面试意见'),
+  (7, 'resultExpectedDate', 'varchar', '结果预期时间'),
+  (7, 'auditionTime', 'varchar', '面试时间'),
+  (7, 'version', 'int4', '简历版本号'),
+  (7, 'analysis_status', 'varchar', '简历分析状态(analysis_start/done/error等)'),
+  (7, 'contact_analysis_status', 'varchar', '提案文分析状态'),
+  (7, 'role_level', 'varchar', '角色等级'),
+  (7, 'role_level_reason', 'varchar', '角色等级原因'),
+  (7, 'createdBy', 'int4', '创建人'),
+  (7, 'updatedBy', 'int4', '更新人'),
+  (7, 'ownerId', 'int4', '负责人'),
+  (7, 'departmentId', 'int4', '部门'),
+  (7, 'active', 'boolean', '是否激活'),
+  (7, 'toBeConfirmed', 'boolean', '待确认标记'),
+  (7, 'reason', 'text', '原因说明');
+
+-- 8. rk_supply_ai
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (8, 'id', 'int4', '主键'),
+  (8, 'supplyId', 'int4', '关联 rk_supply.id'),
+  (8, 'workExperience', 'text', '解析后的工作经历'),
+  (8, 'basic', 'text', '基础信息'),
+  (8, 'xRaw', 'text', 'X轴原始文本'),
+  (8, 'yRaw', 'text', 'Y轴原始文本'),
+  (8, 'zRaw', 'text', 'Z轴原始文本'),
+  (8, 'xData', 'jsonb', 'X轴结构化数据'),
+  (8, 'yData', 'jsonb', 'Y轴结构化数据'),
+  (8, 'zData', 'jsonb', 'Z轴结构化数据'),
+  (8, 'createTime', 'timestamp', '创建时间'),
+  (8, 'updateTime', 'timestamp', '更新时间');
+
+-- 9. rk_supply_edit_record
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (9, 'id', 'int4', '主键'),
+  (9, 'supplyId', 'int4', '关联简历ID'),
+  (9, 'changeBefore', 'jsonb', '变更前内容'),
+  (9, 'changeAfter', 'jsonb', '变更后内容'),
+  (9, 'table_name', 'varchar', '被变更表名(简历/需求/其他)'),
+  (9, 'unique_id', 'int4', '被变更记录主键'),
+  (9, 'role', 'varchar', '操作角色(用户/系统)'),
+  (9, 'change_source_id', 'int4', '变更关联ID'),
+  (9, 'change_source_table', 'varchar', '变更关联表名'),
+  (9, 'createTime', 'timestamp', '创建时间'),
+  (9, 'updateTime', 'timestamp', '更新时间');
+
+-- 10. rk_demand
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (10, 'id', 'int4', '主键'),
+  (10, 'createTime', 'timestamp', '创建时间'),
+  (10, 'updateTime', 'timestamp', '更新时间'),
+  (10, 'code', 'varchar', '需求编号'),
+  (10, 'name', 'varchar', '需求名称/案件名'),
+  (10, 'customerId', 'int4', '关联客户'),
+  (10, 'price', 'float', '报价'),
+  (10, 'customerContactId', 'int4', '关联客户联系人'),
+  (10, 'remark', 'text', '需求描述'),
+  (10, 'workLocation', 'varchar', '工作地点'),
+  (10, 'workMode', 'varchar', '工作模式(远程/现场/hybrid)'),
+  (10, 'skillx', 'varchar', '技能X轴'),
+  (10, 'skilly', 'varchar', '技能Y轴'),
+  (10, 'skillz', 'varchar', '技能Z轴'),
+  (10, 'japaneseLevel', 'varchar', '日语等级，dict typeId=43'),
+  (10, 'englishLevel', 'varchar', '英语等级，dict typeId=44'),
+  (10, 'changeStatus', 'int4', '需求文更新标记'),
+  (10, 'role', 'varchar', '需求角色'),
+  (10, 'fatherSkill', 'varchar', '主技能'),
+  (10, 'headerRemark', 'text', '头部备注'),
+  (10, 'unitPriceMax', 'float', '单价上限'),
+  (10, 'work_percent', 'int4', '出勤比例'),
+  (10, 'role_list', 'jsonb', '角色配置(JSON)'),
+  (10, 'citizenship', 'varchar', '国籍要求，dict typeId=40'),
+  (10, 'priority', 'varchar', '优先级'),
+  (10, 'priorityTime', 'timestamp', '优先级有效时间'),
+  (10, 'version', 'int4', '需求版本号'),
+  (10, 'have_match', 'boolean', '是否已经匹配过'),
+  (10, 'analysis_status', 'varchar', '需求分析状态'),
+  (10, 'role_level', 'varchar', '角色等级'),
+  (10, 'createdBy', 'int4', '创建人'),
+  (10, 'updatedBy', 'int4', '更新人'),
+  (10, 'ownerId', 'int4', '负责人'),
+  (10, 'departmentId', 'int4', '部门'),
+  (10, 'active', 'boolean', '是否激活'),
+  (10, 'toBeConfirmed', 'boolean', '待确认标记'),
+  (10, 'reason', 'text', '原因说明');
+
+-- 11. rk_demand_ai
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (11, 'id', 'int4', '主键'),
+  (11, 'demandId', 'int4', '关联需求'),
+  (11, 'xRaw', 'text', 'X轴原始文本'),
+  (11, 'yRaw', 'text', 'Y轴原始文本'),
+  (11, 'zRaw', 'text', 'Z轴原始文本'),
+  (11, 'xyRaw', 'text', 'XY组合原文'),
+  (11, 'languageRaw', 'text', '语言原文'),
+  (11, 'createTime', 'timestamp', '创建时间'),
+  (11, 'updateTime', 'timestamp', '更新时间');
+
+-- 12. rk_demand_condition
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (12, 'id', 'int4', '主键'),
+  (12, 'createTime', 'timestamp', '创建时间'),
+  (12, 'updateTime', 'timestamp', '更新时间'),
+  (12, 'createdBy', 'int4', '创建人'),
+  (12, 'updatedBy', 'int4', '更新人'),
+  (12, 'ownerId', 'int4', '负责人'),
+  (12, 'departmentId', 'int4', '部门'),
+  (12, 'active', 'boolean', '是否激活'),
+  (12, 'toBeConfirmed', 'boolean', '待确认标记'),
+  (12, 'reason', 'text', '原因说明'),
+  (12, 'demandId', 'int4', '需求ID'),
+  (12, 'type', 'int4', '1用户通用 2需求特定 3系统配置'),
+  (12, 'condition', 'jsonb', '自动匹配条件JSON');
+
+-- 13. rk_demand_copy
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (13, 'id', 'int4', '主键'),
+  (13, 'createTime', 'timestamp', '创建时间'),
+  (13, 'updateTime', 'timestamp', '更新时间'),
+  (13, 'createdBy', 'int4', '创建人'),
+  (13, 'updatedBy', 'int4', '更新人'),
+  (13, 'ownerId', 'int4', '负责人'),
+  (13, 'departmentId', 'int4', '部门'),
+  (13, 'active', 'boolean', '是否激活'),
+  (13, 'toBeConfirmed', 'boolean', '待确认标记'),
+  (13, 'reason', 'text', '原因说明'),
+  (13, 'type', 'varchar', '副本类型'),
+  (13, 'demandId', 'int4', '原始需求ID');
+
+-- 14. rk_supply_demand_link
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (14, 'id', 'int4', '主键'),
+  (14, 'createTime', 'timestamp', '创建时间'),
+  (14, 'updateTime', 'timestamp', '更新时间'),
+  (14, 'createdBy', 'int4', '创建人'),
+  (14, 'updatedBy', 'int4', '更新人'),
+  (14, 'ownerId', 'int4', '负责人'),
+  (14, 'departmentId', 'int4', '部门'),
+  (14, 'active', 'boolean', '是否激活'),
+  (14, 'toBeConfirmed', 'boolean', '待确认标记'),
+  (14, 'reason', 'text', '原因说明'),
+  (14, 'name', 'varchar', '案例名称'),
+  (14, 'supplyId', 'int4', '关联简历'),
+  (14, 'demandId', 'int4', '关联需求'),
+  (14, 'demandText', 'text', '需求快照文本'),
+  (14, 'k', 'int4', '业务参数K'),
+  (14, 'tag', 'boolean', '标记'),
+  (14, 'tagReason', 'text', '标记原因'),
+  (14, 'supplyDemandStatus1', 'varchar', '状态1(预留)'),
+  (14, 'supplyDemandStatus2', 'varchar', '状态2(预留)'),
+  (14, 'supplyDemandStatus3', 'varchar', '主状态，dict typeId=35 CASE流程'),
+  (14, 'supplyDemandStatus4', 'varchar', '隐藏状态，dict typeId=34'),
+  (14, 'supplyDemandStatus5', 'varchar', '来源(自动匹配/手动匹配)，dict typeId=36'),
+  (14, 'status', 'text', '业务状态备注'),
+  (14, 'score', 'float', '匹配得分'),
+  (14, 'remark', 'text', '备注'),
+  (14, 'result', 'text', '匹配结果'),
+  (14, 'years', 'int4', '匹配的年限'),
+  (14, 'fatherSkill', 'varchar', '主技能'),
+  (14, 'demand_role', 'varchar', '需求角色'),
+  (14, 'demand_version', 'int4', '需求版本'),
+  (14, 'supply_version', 'int4', '简历版本'),
+  (14, 'warning_msg', 'jsonb', '预警信息');
+
+-- 15. rk_case_status
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (15, 'id', 'int4', '主键'),
+  (15, 'createTime', 'timestamp', '创建时间'),
+  (15, 'updateTime', 'timestamp', '更新时间'),
+  (15, 'case_id', 'int4', '关联 rk_supply_demand_link.id'),
+  (15, 'status', 'varchar', '历史状态'),
+  (15, 'remark', 'varchar', '状态备注'),
+  (15, 'active', 'boolean', '是否当前状态');
+
+-- 16. rk_match_res
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (16, 'id', 'int4', '主键'),
+  (16, 'createTime', 'timestamp', '创建时间'),
+  (16, 'updateTime', 'timestamp', '更新时间'),
+  (16, 'createdBy', 'int4', '创建人'),
+  (16, 'updatedBy', 'int4', '更新人'),
+  (16, 'ownerId', 'int4', '负责人'),
+  (16, 'departmentId', 'int4', '部门'),
+  (16, 'active', 'boolean', '是否激活'),
+  (16, 'toBeConfirmed', 'boolean', '待确认'),
+  (16, 'reason', 'text', '原因说明'),
+  (16, 'demand_id', 'int4', '需求ID'),
+  (16, 'supply_id', 'int4', '简历ID'),
+  (16, 'demand_role', 'varchar', '需求角色'),
+  (16, 'score', 'float', '匹配得分'),
+  (16, 'warning_msg', 'jsonb', '预警信息'),
+  (16, 'years_data', 'jsonb', '年限数据'),
+  (16, 'demand_version', 'int4', '需求版本'),
+  (16, 'supply_version', 'int4', '简历版本'),
+  (16, 'type', 'varchar', '参与匹配/未参与'),
+  (16, 'msg', 'jsonb', '消息/解释'),
+  (16, 'reject_type', 'varchar', '入围类型'),
+  (16, 'reject_reason', 'varchar', '未入围原因');
+
+-- 17. rk_llm_data
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (17, 'id', 'int4', '主键'),
+  (17, 'demand_id', 'int4', '需求ID'),
+  (17, 'supply_id', 'int4', '简历ID'),
+  (17, 'event_type', 'varchar', '事件类型'),
+  (17, 'res', 'jsonb', '模型返回内容'),
+  (17, 'model', 'varchar', '模型名称'),
+  (17, 'special', 'jsonb', '上下文/特参'),
+  (17, 'parent_id', 'int4', '父调用ID'),
+  (17, 'createTime', 'timestamp', '创建时间'),
+  (17, 'updateTime', 'timestamp', '更新时间');
+
+-- 18. rk_shared_links
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (18, 'id', 'int4', '主键'),
+  (18, 'createTime', 'timestamp', '创建时间'),
+  (18, 'updateTime', 'timestamp', '更新时间'),
+  (18, 'createdBy', 'int4', '创建人'),
+  (18, 'updatedBy', 'int4', '更新人'),
+  (18, 'ownerId', 'int4', '负责人'),
+  (18, 'departmentId', 'int4', '部门'),
+  (18, 'active', 'boolean', '是否激活'),
+  (18, 'toBeConfirmed', 'boolean', '待确认'),
+  (18, 'reason', 'text', '原因说明'),
+  (18, 'resourceType', 'varchar', '资源类型 supply/demand'),
+  (18, 'resourceId', 'jsonb', '资源ID'),
+  (18, 'shareToken', 'varchar', '分享Token'),
+  (18, 'expireAt', 'timestamp', '过期时间');
+
+-- 19. rk_setting
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (19, 'id', 'int4', '主键'),
+  (19, 'createTime', 'timestamp', '创建时间'),
+  (19, 'updateTime', 'timestamp', '更新时间'),
+  (19, 'createdBy', 'int4', '创建人'),
+  (19, 'updatedBy', 'int4', '更新人'),
+  (19, 'ownerId', 'int4', '负责人'),
+  (19, 'departmentId', 'int4', '部门'),
+  (19, 'active', 'boolean', '是否激活'),
+  (19, 'toBeConfirmed', 'boolean', '待确认'),
+  (19, 'reason', 'text', '原因说明'),
+  (19, 'demand_id', 'int4', '需求ID'),
+  (19, 'type', 'varchar', '类型'),
+  (19, 'isTeamsEnabled', 'boolean', 'Teams是否开启'),
+  (19, 'isOutlookEnabled', 'boolean', 'Outlook是否开启'),
+  (19, 'teams_account', 'text', 'Teams认证/账号'),
+  (19, 'outlook_subject', 'varchar', 'Outlook消息标题'),
+  (19, 'teams_text', 'text', 'Teams消息模板'),
+  (19, 'outlook_text', 'text', 'Outlook消息模板'),
+  (19, 'teams_contact', 'jsonb', 'Teams联系人'),
+  (19, 'outlook_contact', 'jsonb', 'Outlook联系人');
+
+-- 20. rk_notice
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (20, 'id', 'int4', '主键'),
+  (20, 'createTime', 'timestamp', '创建时间'),
+  (20, 'updateTime', 'timestamp', '更新时间'),
+  (20, 'createdBy', 'int4', '创建人'),
+  (20, 'updatedBy', 'int4', '更新人'),
+  (20, 'ownerId', 'int4', '负责人'),
+  (20, 'departmentId', 'int4', '部门'),
+  (20, 'active', 'boolean', '是否激活'),
+  (20, 'toBeConfirmed', 'boolean', '待确认'),
+  (20, 'reason', 'text', '原因说明'),
+  (20, 'recieverId', 'int4', '接收人'),
+  (20, 'content', 'text', '通知内容'),
+  (20, 'isRead', 'boolean', '是否已读'),
+  (20, 'model', 'varchar', '通知来源模型'),
+  (20, 'from', 'varchar', '来源'),
+  (20, 'type', 'varchar', '通知类型');
+
+-- 21. rk_active
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (21, 'id', 'int4', '主键'),
+  (21, 'createTime', 'timestamp', '创建时间'),
+  (21, 'updateTime', 'timestamp', '更新时间'),
+  (21, 'createdBy', 'int4', '创建人'),
+  (21, 'updatedBy', 'int4', '更新人'),
+  (21, 'ownerId', 'int4', '负责人'),
+  (21, 'departmentId', 'int4', '部门'),
+  (21, 'active', 'boolean', '是否激活'),
+  (21, 'toBeConfirmed', 'boolean', '待确认'),
+  (21, 'reason', 'text', '原因说明'),
+  (21, 'status', 'boolean', '活跃状态');
+
+-- 22. rk_announcement
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (22, 'id', 'int4', '主键'),
+  (22, 'createTime', 'timestamp', '创建时间'),
+  (22, 'updateTime', 'timestamp', '更新时间'),
+  (22, 'createdBy', 'int4', '创建人'),
+  (22, 'departmentId', 'int4', '部门'),
+  (22, 'updatedBy', 'int4', '更新人'),
+  (22, 'ownerId', 'int4', '负责人'),
+  (22, 'active', 'boolean', '是否激活'),
+  (22, 'content', 'text', '公告内容');
+
+-- 23. rk_opportunity
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (23, 'id', 'int4', '主键'),
+  (23, 'createTime', 'timestamp', '创建时间'),
+  (23, 'updateTime', 'timestamp', '更新时间'),
+  (23, 'createdBy', 'int4', '创建人'),
+  (23, 'updatedBy', 'int4', '更新人'),
+  (23, 'ownerId', 'int4', '负责人'),
+  (23, 'departmentId', 'int4', '部门'),
+  (23, 'active', 'boolean', '是否激活'),
+  (23, 'toBeConfirmed', 'boolean', '待确认'),
+  (23, 'reason', 'text', '原因说明'),
+  (23, 'code', 'varchar', '商机编号'),
+  (23, 'name', 'varchar', '商机名称'),
+  (23, 'status', 'varchar', '商机状态'),
+  (23, 'customerId', 'int4', '关联客户'),
+  (23, 'assigneeId', 'int4', '负责人'),
+  (23, 'remark', 'varchar', '备注');
+
+-- 24. rk_opportunity_line
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (24, 'id', 'int4', '主键'),
+  (24, 'createTime', 'timestamp', '创建时间'),
+  (24, 'updateTime', 'timestamp', '更新时间'),
+  (24, 'createdBy', 'int4', '创建人'),
+  (24, 'updatedBy', 'int4', '更新人'),
+  (24, 'ownerId', 'int4', '负责人'),
+  (24, 'departmentId', 'int4', '部门'),
+  (24, 'active', 'boolean', '是否激活'),
+  (24, 'toBeConfirmed', 'boolean', '待确认'),
+  (24, 'reason', 'text', '原因说明'),
+  (24, 'name', 'varchar', '行项目名称'),
+  (24, 'status', 'varchar', '行项目状态'),
+  (24, 'price', 'float', '价格'),
+  (24, 'quantity', 'int4', '数量'),
+  (24, 'remark', 'varchar', '备注'),
+  (24, 'opportunityId', 'int4', '关联商机');
+
+-- 25. rk_customer_column
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (25, 'id', 'int4', '主键'),
+  (25, 'createTime', 'timestamp', '创建时间'),
+  (25, 'updateTime', 'timestamp', '更新时间'),
+  (25, 'createdBy', 'int4', '创建人'),
+  (25, 'updatedBy', 'int4', '更新人'),
+  (25, 'ownerId', 'int4', '负责人'),
+  (25, 'departmentId', 'int4', '部门'),
+  (25, 'active', 'boolean', '是否激活'),
+  (25, 'toBeConfirmed', 'boolean', '待确认'),
+  (25, 'reason', 'text', '原因说明'),
+  (25, 'name', 'varchar', '配置名称'),
+  (25, 'columnInfo', 'jsonb', '列信息JSON');
+
+-- 26. rk_gaofzhan
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (26, 'id', 'int4', '主键'),
+  (26, 'createTime', 'timestamp', '创建时间'),
+  (26, 'updateTime', 'timestamp', '更新时间'),
+  (26, 'createdBy', 'int4', '创建人'),
+  (26, 'updatedBy', 'int4', '更新人'),
+  (26, 'ownerId', 'int4', '负责人'),
+  (26, 'departmentId', 'int4', '部门'),
+  (26, 'active', 'boolean', '是否激活'),
+  (26, 'toBeConfirmed', 'boolean', '待确认'),
+  (26, 'reason', 'text', '原因说明'),
+  (26, 'code', 'varchar', '代码'),
+  (26, 'desc', 'varchar', '描述');
+
+-- 27. recycle_data
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (27, 'id', 'int4', '主键'),
+  (27, 'createTime', 'timestamp', '创建时间'),
+  (27, 'updateTime', 'timestamp', '更新时间'),
+  (27, 'entityInfo', 'jsonb', '实体信息'),
+  (27, 'data', 'jsonb', '被删除的数据'),
+  (27, 'url', 'varchar', '请求URL'),
+  (27, 'params', 'jsonb', '请求参数'),
+  (27, 'count', 'int4', '数量');
+
+-- 28. plugin_info
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (28, 'id', 'int4', '主键'),
+  (28, 'createTime', 'timestamp', '创建时间'),
+  (28, 'updateTime', 'timestamp', '更新时间'),
+  (28, 'name', 'varchar', '插件名称'),
+  (28, 'description', 'text', '插件描述'),
+  (28, 'keyName', 'varchar', '插件标识'),
+  (28, 'hook', 'varchar', 'Hook/挂载点'),
+  (28, 'readme', 'text', '使用说明'),
+  (28, 'version', 'varchar', '版本'),
+  (28, 'logo', 'varchar', 'Logo'),
+  (28, 'author', 'varchar', '作者'),
+  (28, 'status', 'varchar', '状态'),
+  (28, 'content', 'text', 'JS代码'),
+  (28, 'tsContent', 'text', 'TS代码'),
+  (28, 'pluginJson', 'jsonb', '插件元数据'),
+  (28, 'config', 'jsonb', '插件配置');
+
+-- 29. space_type
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (29, 'id', 'int4', '主键'),
+  (29, 'createTime', 'timestamp', '创建时间'),
+  (29, 'updateTime', 'timestamp', '更新时间'),
+  (29, 'name', 'varchar', '分类名称'),
+  (29, 'parentId', 'int4', '父分类ID');
+
+-- 30. space_info
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (30, 'id', 'int4', '主键'),
+  (30, 'createTime', 'timestamp', '创建时间'),
+  (30, 'updateTime', 'timestamp', '更新时间'),
+  (30, 'url', 'varchar', '文件URL'),
+  (30, 'type', 'varchar', '文件类型'),
+  (30, 'classifyId', 'int4', '分类ID'),
+  (30, 'fileId', 'varchar', '文件ID'),
+  (30, 'name', 'varchar', '文件名'),
+  (30, 'size', 'int8', '文件大小'),
+  (30, 'version', 'varchar', '版本'),
+  (30, 'key', 'varchar', 'key/存取标识');
+
+-- 31. task_info
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (31, 'id', 'int4', '主键'),
+  (31, 'createTime', 'timestamp', '创建时间'),
+  (31, 'updateTime', 'timestamp', '更新时间'),
+  (31, 'jobId', 'varchar', '任务ID/名称'),
+  (31, 'repeatConf', 'varchar', '重复配置'),
+  (31, 'name', 'varchar', '任务名称'),
+  (31, 'cron', 'varchar', 'Cron表达式'),
+  (31, 'limit', 'int4', '并发限制'),
+  (31, 'every', 'int4', '运行间隔'),
+  (31, 'status', 'varchar', '状态'),
+  (31, 'startDate', 'timestamp', '开始日期'),
+  (31, 'endDate', 'timestamp', '结束日期'),
+  (31, 'data', 'jsonb', '任务数据'),
+  (31, 'service', 'varchar', '服务入口'),
+  (31, 'type', 'varchar', '任务类型'),
+  (31, 'nextRunTime', 'timestamp', '下一次运行时间'),
+  (31, 'taskType', 'varchar', '任务分类'),
+  (31, 'remark', 'varchar', '备注');
+
+-- 32. task_log
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (32, 'id', 'int4', '主键'),
+  (32, 'createTime', 'timestamp', '创建时间'),
+  (32, 'updateTime', 'timestamp', '更新时间'),
+  (32, 'taskId', 'int4', '关联 task_info.id'),
+  (32, 'status', 'varchar', '执行状态'),
+  (32, 'detail', 'text', '执行详情');
+
+-- 33. base_sys_user
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (33, 'id', 'int4', '主键'),
+  (33, 'createTime', 'timestamp', '创建时间'),
+  (33, 'updateTime', 'timestamp', '更新时间'),
+  (33, 'departmentId', 'int4', '部门'),
+  (33, 'name', 'varchar', '姓名'),
+  (33, 'username', 'varchar', '用户名(登录)'),
+  (33, 'password', 'varchar', '密码'),
+  (33, 'passwordV', 'varchar', '密码版本/盐'),
+  (33, 'nickName', 'varchar', '昵称'),
+  (33, 'headImg', 'varchar', '头像'),
+  (33, 'phone', 'varchar', '电话'),
+  (33, 'email', 'varchar', '邮箱'),
+  (33, 'remark', 'varchar', '备注'),
+  (33, 'status', 'int4', '状态'),
+  (33, 'socketId', 'varchar', 'Socket连接ID');
+
+-- 34. base_sys_role
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (34, 'id', 'int4', '主键'),
+  (34, 'createTime', 'timestamp', '创建时间'),
+  (34, 'updateTime', 'timestamp', '更新时间'),
+  (34, 'name', 'varchar', '角色名称'),
+  (34, 'label', 'varchar', '角色标签'),
+  (34, 'remark', 'varchar', '备注'),
+  (34, 'relevance', 'boolean', '是否关联'),
+  (34, 'menuIdList', 'jsonb', '菜单ID列表'),
+  (34, 'departmentIdList', 'jsonb', '部门ID列表');
+
+-- 35. base_sys_menu
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (35, 'id', 'int4', '主键'),
+  (35, 'createTime', 'timestamp', '创建时间'),
+  (35, 'updateTime', 'timestamp', '更新时间'),
+  (35, 'parentId', 'int4', '父菜单'),
+  (35, 'name', 'varchar', '菜单名称'),
+  (35, 'router', 'varchar', '路由'),
+  (35, 'perms', 'varchar', '权限标识'),
+  (35, 'type', 'int4', '类型(目录/菜单/按钮)'),
+  (35, 'icon', 'varchar', '图标'),
+  (35, 'orderNum', 'int4', '排序'),
+  (35, 'viewPath', 'varchar', '视图路径'),
+  (35, 'keepAlive', 'boolean', '是否缓存'),
+  (35, 'isShow', 'boolean', '是否显示');
+
+-- 36. base_sys_department
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (36, 'id', 'int4', '主键'),
+  (36, 'createTime', 'timestamp', '创建时间'),
+  (36, 'updateTime', 'timestamp', '更新时间'),
+  (36, 'name', 'varchar', '部门名称'),
+  (36, 'parentId', 'int4', '父部门'),
+  (36, 'orderNum', 'int4', '排序');
+
+-- 37. base_sys_user_role
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (37, 'id', 'int4', '主键'),
+  (37, 'createTime', 'timestamp', '创建时间'),
+  (37, 'updateTime', 'timestamp', '更新时间'),
+  (37, 'userId', 'int4', '用户ID'),
+  (37, 'roleId', 'int4', '角色ID');
+
+-- 38. base_sys_role_menu
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (38, 'id', 'int4', '主键'),
+  (38, 'createTime', 'timestamp', '创建时间'),
+  (38, 'updateTime', 'timestamp', '更新时间'),
+  (38, 'roleId', 'int4', '角色ID'),
+  (38, 'menuId', 'int4', '菜单ID');
+
+-- 39. base_sys_role_department
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (39, 'id', 'int4', '主键'),
+  (39, 'createTime', 'timestamp', '创建时间'),
+  (39, 'updateTime', 'timestamp', '更新时间'),
+  (39, 'roleId', 'int4', '角色ID'),
+  (39, 'departmentId', 'int4', '部门ID');
+
+-- 40. base_sys_conf
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (40, 'id', 'int4', '主键'),
+  (40, 'createTime', 'timestamp', '创建时间'),
+  (40, 'updateTime', 'timestamp', '更新时间'),
+  (40, 'cKey', 'varchar', '配置键'),
+  (40, 'cValue', 'varchar', '配置值');
+
+-- 41. base_sys_param
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (41, 'id', 'int4', '主键'),
+  (41, 'createTime', 'timestamp', '创建时间'),
+  (41, 'updateTime', 'timestamp', '更新时间'),
+  (41, 'keyName', 'varchar', '参数键'),
+  (41, 'name', 'varchar', '参数名称'),
+  (41, 'data', 'jsonb', '参数数据'),
+  (41, 'dataType', 'varchar', '数据类型'),
+  (41, 'remark', 'varchar', '备注');
+
+-- 42. base_sys_log
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (42, 'id', 'int4', '主键'),
+  (42, 'createTime', 'timestamp', '创建时间'),
+  (42, 'updateTime', 'timestamp', '更新时间'),
+  (42, 'userId', 'int4', '用户ID'),
+  (42, 'action', 'varchar', '操作动作'),
+  (42, 'ip', 'varchar', '请求IP'),
+  (42, 'params', 'jsonb', '请求参数');
+
+-- 43. user_info
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (43, 'id', 'int4', '主键'),
+  (43, 'createTime', 'timestamp', '创建时间'),
+  (43, 'updateTime', 'timestamp', '更新时间'),
+  (43, 'unionid', 'varchar', '微信/开放平台 unionid'),
+  (43, 'avatarUrl', 'varchar', '头像'),
+  (43, 'nickName', 'varchar', '昵称'),
+  (43, 'phone', 'varchar', '手机号'),
+  (43, 'gender', 'varchar', '性别'),
+  (43, 'status', 'varchar', '状态'),
+  (43, 'loginType', 'varchar', '登录类型'),
+  (43, 'password', 'varchar', '密码');
+
+-- 44. user_address
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (44, 'id', 'int4', '主键'),
+  (44, 'createTime', 'timestamp', '创建时间'),
+  (44, 'updateTime', 'timestamp', '更新时间'),
+  (44, 'userId', 'int4', '用户ID'),
+  (44, 'contact', 'varchar', '联系人'),
+  (44, 'phone', 'varchar', '联系电话'),
+  (44, 'province', 'varchar', '省'),
+  (44, 'city', 'varchar', '市'),
+  (44, 'district', 'varchar', '区'),
+  (44, 'address', 'varchar', '详细地址'),
+  (44, 'isDefault', 'boolean', '是否默认');
+
+-- 45. user_wx
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (45, 'id', 'int4', '主键'),
+  (45, 'createTime', 'timestamp', '创建时间'),
+  (45, 'updateTime', 'timestamp', '更新时间'),
+  (45, 'unionid', 'varchar', 'unionid'),
+  (45, 'openid', 'varchar', 'openid'),
+  (45, 'avatarUrl', 'varchar', '头像'),
+  (45, 'nickName', 'varchar', '昵称'),
+  (45, 'gender', 'varchar', '性别'),
+  (45, 'language', 'varchar', '语言'),
+  (45, 'city', 'varchar', '城市'),
+  (45, 'province', 'varchar', '省份'),
+  (45, 'country', 'varchar', '国家'),
+  (45, 'type', 'varchar', '类型');
+
+-- 46. demo_goods
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  (46, 'id', 'int4', '主键'),
+  (46, 'createTime', 'timestamp', '创建时间'),
+  (46, 'updateTime', 'timestamp', '更新时间'),
+  (46, 'title', 'varchar', '商品标题'),
+  (46, 'price', 'float', '价格'),
+  (46, 'description', 'text', '描述'),
+  (46, 'mainImage', 'varchar', '主图'),
+  (46, 'exampleImages', 'varchar', '示例图片'),
+  (46, 'stock', 'int4', '库存');
+
+-- 47. migrations
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  ( 'id', 'int4', '主键'),
+  ( 'timestamp', 'int8', '时间戳'),
+  ( 'name', 'varchar', '迁移名称');
+
+-- 48. query-result-cache
+INSERT INTO meta_column (table_id, column_name, data_type, meaning) VALUES
+  ( 'id', 'int4', '主键'),
+  ( 'identifier', 'varchar', '查询标识'),
+  ( 'time', 'int8', '创建时间戳'),
+  ( 'duration', 'int8', '缓存持续毫秒'),
+  ( 'query', 'text', '查询SQL'),
+  ( 'result', 'jsonb', '查询结果缓存');
